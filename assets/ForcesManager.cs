@@ -13,28 +13,23 @@ public class ForcesManager : MonoBehaviour {
     public Slider voltage;
     public Toggle toggle;
     public Text voltageLabel;
+    public Button changeNumElectrons;
 
     public Text forceLabel, chargeLabel;
-    public Button increase, decrease;
 
-    private float numOfElectrons = 1;
+
+    private float numOfElectrons;
     private readonly float density = 930f;
-
 
     void Start()
     {
-        increase.onClick.AddListener(IncreaseSize);
-        decrease.onClick.AddListener(DecreaseSize);
+        changeNumElectrons.onClick.AddListener(OnChange);
+        numOfElectrons = Random.Range(1, 7);
     }
 
-    void IncreaseSize()
+    void OnChange()
     {
-        numOfElectrons++;
-    }
-
-    void DecreaseSize()
-    {
-        numOfElectrons--;
+        numOfElectrons = Random.Range(1, 7);
     }
 
     private void CalculateForces(Rigidbody rb)
@@ -57,14 +52,7 @@ public class ForcesManager : MonoBehaviour {
 
         if (!toggle.isOn)
         {
-            if (voltage.value < 400)
-            {
-                force = 3;
-            }
-            else
-            {
-                force = ((voltage.value * charge) / distance) / 3;
-            }
+            force = ((voltage.value * charge) / distance) / 3;
             forceLabel.text = "FE: " + ((voltage.value * factoredCharge) / (distance / 100));
             gravity = (rb.mass * -10f) / 3;
             rb.isKinematic = false;
