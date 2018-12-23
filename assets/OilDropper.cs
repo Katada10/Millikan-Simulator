@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OilDropper : MonoBehaviour {
     private ParticleSystem system;
@@ -8,7 +9,8 @@ public class OilDropper : MonoBehaviour {
 
     public Transform position;
     public Transform oilPrefab;
-
+ 
+    public Button button;
 
 	private bool oilDropped;
 
@@ -17,6 +19,12 @@ public class OilDropper : MonoBehaviour {
         system = GetComponent<ParticleSystem>();
         events = new List<ParticleCollisionEvent>();
         oilDropped = false;
+        button.onClick.AddListener(OnClick);
+    }
+
+    void OnClick()
+    {
+        system.Play();
     }
 
 	void OnParticleCollision(GameObject obj)
@@ -27,7 +35,7 @@ public class OilDropper : MonoBehaviour {
             if(!oilDropped)
             {
                 oilDropped = true;
-                Instantiate(oilPrefab, position.transform.position,  Quaternion.identity);
+                Instantiate(oilPrefab, position.transform.position, Quaternion.identity);
             }
         }
 	}
