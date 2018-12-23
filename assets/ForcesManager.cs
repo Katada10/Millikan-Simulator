@@ -24,12 +24,12 @@ public class ForcesManager : MonoBehaviour {
     void Start()
     {
         changeNumElectrons.onClick.AddListener(OnChange);
-        numOfElectrons = Random.Range(1, 7);
+        numOfElectrons = Random.Range(1, 10);
     }
 
     void OnChange()
     {
-        numOfElectrons = Random.Range(1, 7);
+        numOfElectrons = Random.Range(1, 10);
     }
 
     private void CalculateForces(Rigidbody rb)
