@@ -6,6 +6,7 @@ to fall through the top hole, and by adjusting the voltage of the plates it was 
 At the point where an oil drop is suspended, the force of gravity on it is exactly equal to the upward force generated from the electric field.
 
 Fg = Fe
+
 mg = qE
 
 The mass o the oil drop, the acceleration due to gravity, and the Electric field applied on it were all known, therefore it was easy to solve for q, the charge.
